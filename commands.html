@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Everything Dex Bot - Commands</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Star container fixed behind content */
+        #stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars"></div>
+
+    <header class="hero">
+        <h1>🚀 Everything Dex Commands</h1>
+        <p>Explore all the commands you can use in your cosmic adventure!</p>
+        <a class="button" href="index.html">← Back to Home</a>
+    </header>
+
+    <section class="commands-category">
+        <h2>💰 Economy</h2>
+        <ul>
+            <li><strong>/balance</strong> — Check your coins</li>
+            <li><strong>/beg</strong> — Beg for coins</li>
+            <li><strong>/daily</strong> — Claim daily coins</li>
+            <li><strong>/work</strong> — Earn coins</li>
+            <li><strong>/transfer</strong> — Transfer coins to another player</li>
+        </ul>
+    </section>
+
+    <section class="commands-category">
+        <h2>🃏 Card Collecting</h2>
+        <ul>
+            <li><strong>/collection</strong> — View your card collection</li>
+            <li><strong>/completion</strong> — Check your completion percentage</li>
+            <li><strong>/info</strong> — Get info about a specific card</li>
+            <li><strong>/gift</strong> — Gift a card to another player</li>
+            <li><strong>/wish</strong> — Make a wish for a card</li>
+            <li><strong>/last</strong> — View the last spawned card</li>
+        </ul>
+    </section>
+
+    <section class="commands-category">
+        <h2>⚙ Utilities</h2>
+        <ul>
+            <li><strong>/setspawnchannel</strong> — Set the spawn channel</li>
+            <li><strong>/invite</strong> — Get the bot invite link</li>
+        </ul>
+    </section>
+
+    <section class="commands-category">
+        <h2>🏆 Leaderboard & Profile</h2>
+        <ul>
+            <li><strong>/top</strong> — See the leaderboard</li>
+            <li><strong>/profile</strong> — View your player profile</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>⭐ Made with love & stardust ✨ | Everything Dex Bot</p>
+    </footer>
+
+    <script>
+        const numStars = 150;
+        const starsContainer = document.getElementById('stars');
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Randomly assign size class for variety
+            const sizeRand = Math.random();
+            if (sizeRand < 0.5) star.classList.add('small');
+            else if (sizeRand < 0.85) star.classList.add('medium');
+            else star.classList.add('large');
+
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${1 + Math.random() * 3}s`;
+
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>

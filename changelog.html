@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Everything Dex Bot - Changelog</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Star container fixed behind content */
+        #stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Changelog section styling */
+        .changelog {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #3b0077cc, #1a0033cc);
+            border-radius: 20px;
+            box-shadow: 0 0 30px #6a0dad;
+            color: #d1b3ff;
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .changelog h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            color: #d580ff;
+            text-shadow: 0 0 15px #9b30ff;
+            text-align: center;
+        }
+
+        .changelog ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .changelog li {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 12px 0;
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #8a2be2;
+            transition: background 0.3s ease;
+            font-size: 1.15em;
+            line-height: 1.5;
+        }
+
+        .changelog li:hover {
+            background: rgba(255, 255, 255, 0.12);
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars"></div>
+
+    <header class="hero">
+        <h1>📜 Everything Dex Changelog</h1>
+        <p>Stay updated with the latest features, fixes, and improvements!</p>
+        <a class="button" href="index.html">← Back to Home</a>
+    </header>
+
+    <section class="changelog">
+        <h2>Latest Updates</h2>
+        <ul>
+            <li><strong>2025-05-25:</strong> EVERYTHING DEX V1.2:
+            Added new categories,
+            Added new cards,
+            Updated /info and /gift command,
+            bug fixes</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>⭐ Made with love & stardust ✨ | Everything Dex Bot</p>
+    </footer>
+
+    <script>
+        const numStars = 150;
+        const starsContainer = document.getElementById('stars');
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Randomly assign size class for variety
+            const sizeRand = Math.random();
+            if (sizeRand < 0.5) star.classList.add('small');
+            else if (sizeRand < 0.85) star.classList.add('medium');
+            else star.classList.add('large');
+
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${1 + Math.random() * 3}s`;
+
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>

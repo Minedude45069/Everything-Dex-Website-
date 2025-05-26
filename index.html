@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Everything Dex Bot</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Add star container styles here so no external div needed */
+        #stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars"></div>
+
+    <header class="hero">
+        <h1>🚀 Everything Dex Bot</h1>
+        <p>Your playful, cosmic card collector adventure!</p>
+        <a
+            class="button"
+            href="https://discord.com/oauth2/authorize?client_id=1353646455344070717&scope=bot&permissions=8"
+            >Invite Me!</a
+        >
+    </header>
+
+    <section class="about">
+        <h2>About</h2>
+        <p>
+            Everything Dex is a playful and engaging Discord bot where you can collect,
+            trade, and explore cards from all corners of the universe — from famous
+            people to cars, animals, landmarks, food, and beyond! Whether you're hunting
+            for rare finds or building up your cosmic collection, the Dex is your
+            passport to fun and discovery.
+        </p>
+    </section>
+
+    <section class="commands-button" style="text-align: center;">
+        <a class="button" href="commands.html">✨ View Commands ✨</a>
+        <br>
+        <a href="changelog.html" class="button">📝 View Changelog</a>
+    </section>
+
+    <section class="news-updates">
+      <h2>📰 News & Updates</h2>
+      <ul id="news-list">
+        <li>
+          <strong>May 25, 2025:</strong> Everything Dex V1.2 Has been released!
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+        <p>⭐ Made with love & stardust ✨ | Everything Dex Bot</p>
+    </footer>
+
+    <script>
+        const numStars = 150;
+        const starsContainer = document.getElementById('stars');
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Randomly assign size class
+            const sizeRand = Math.random();
+            if (sizeRand < 0.5) star.classList.add('small');
+            else if (sizeRand < 0.85) star.classList.add('medium');
+            else star.classList.add('large');
+
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${1 + Math.random() * 3}s`;
+
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
