@@ -16,70 +16,35 @@
   </div>
 
   <div id="adminSection" style="display: none;">
-    <h2>Add New Card</h2>
-    <form id="cardForm">
-      <input type="text" id="name" placeholder="Card Name" required>
-      <input type="text" id="category" placeholder="Category" required>
-      <input type="text" id="rarity" placeholder="Rarity" required>
-      <button type="submit">Add Card</button>
-    </form>
+    <h2>Welcome, Admin!</h2>
+    <p>You are now logged in.</p>
 
-    <h2>Current Cards</h2>
-    <ul id="cardList"></ul>
+    <!-- Add whatever you want here -->
+    <button id="logoutBtn">Logout</button>
   </div>
 
   <script>
-    let isLoggedIn = false;
+    const hardcodedUsername = 'admin';
+    const hardcodedPassword = 'theultimateidk69420';
 
-    document.getElementById('loginBtn').addEventListener('click', async () => {
+    document.getElementById('loginBtn').addEventListener('click', () => {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      const res = await fetch('/api/adminlogin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        isLoggedIn = true;
+      if (username === hardcodedUsername && password === hardcodedPassword) {
         document.getElementById('loginSection').style.display = 'none';
         document.getElementById('adminSection').style.display = 'block';
-        fetchCards();
       } else {
-        document.getElementById('loginMessage').textContent = 'Invalid login!';
+        document.getElementById('loginMessage').textContent = 'Invalid username or password!';
       }
     });
 
-    async function fetchCards() {
-      const res = await fetch('/api/cards');
-      const cards = await res.json();
-      const list = document.getElementById('cardList');
-      list.innerHTML = '';
-      cards.forEach(card => {
-        const li = document.createElement('li');
-        li.textContent = `${card.name} (${card.category}, ${card.rarity})`;
-        list.appendChild(li);
-      });
-    }
-
-    document.getElementById('cardForm').addEventListener('submit', async e => {
-      e.preventDefault();
-      if (!isLoggedIn) return;
-
-      const name = document.getElementById('name').value;
-      const category = document.getElementById('category').value;
-      const rarity = document.getElementById('rarity').value;
-
-      await fetch('/api/cards', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, category, rarity })
-      });
-
-      document.getElementById('cardForm').reset();
-      fetchCards();
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      document.getElementById('adminSection').style.display = 'none';
+      document.getElementById('loginSection').style.display = 'block';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('loginMessage').textContent = '';
     });
   </script>
 </body>
