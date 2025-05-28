@@ -1,94 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Everything Dex Bot - Commands</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        /* Star container fixed behind content */
-        #stars {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Everything Dex Bot - Commands</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    :root {
+      --color-bg: #0f0e17;
+      --color-bg-alt: #1a1a40cc;
+      --color-primary: #7f5af0;
+      --color-primary-light: #9f80ff;
+      --color-text: #e0d6ff;
+      --color-text-muted: #a6a0ff;
+      --color-border: #2e2c50;
+      --color-button-bg: #7f5af0;
+      --color-button-bg-hover: #5c3ec7;
+      --color-section-bg-glass: rgba(25, 26, 46, 0.4);
+      --color-star: #9b30ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-top: 60px; /* space for fixed navbar */
+    }
+
+    /* Navbar styles */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--color-section-bg-glass);
+      border-bottom: 1px solid var(--color-border);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(127, 90, 240, 0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background: var(--color-primary);
+      color: white;
+      outline: none;
+      box-shadow: 0 0 10px var(--color-primary-light);
+    }
+
+    nav ul li a[aria-current="page"] {
+      background: var(--color-primary);
+      color: white;
+      cursor: default;
+    }
+
+    /* Star container fixed behind content */
+    #stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Single star styles */
+    .star {
+      position: absolute;
+      background: var(--color-star);
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0 0 5px 1px var(--color-star);
+      animation: twinkle 3s infinite alternate ease-in-out;
+    }
+
+    .star.small {
+      width: 2px;
+      height: 2px;
+      animation-duration: 2.5s;
+    }
+
+    .star.medium {
+      width: 3.5px;
+      height: 3.5px;
+      animation-duration: 3.5s;
+    }
+
+    .star.large {
+      width: 5px;
+      height: 5px;
+      animation-duration: 4.5s;
+    }
+
+    .star:nth-child(odd) {
+      animation-delay: 0s;
+    }
+    .star:nth-child(even) {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+        box-shadow: 0 0 3px 1px var(--color-star);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 7px 2px var(--color-star);
+      }
+    }
+
+    /* Page main section */
+    main {
+      max-width: 900px;
+      margin: 48px auto 80px;
+      padding: 0 24px;
+    }
+
+    section.commands {
+      background: var(--color-section-bg-glass);
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      padding: 40px 40px;
+      box-shadow: 0 0 20px rgba(127, 90, 240, 0.3);
+      backdrop-filter: blur(10px);
+      color: var(--color-text);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      outline: none;
+    }
+
+    section.commands:hover {
+      box-shadow: 0 10px 40px rgba(127, 90, 240, 0.35);
+      transform: translateY(-6px);
+    }
+
+    section.commands h2 {
+      font-size: 2.5em;
+      margin-bottom: 25px;
+      color: var(--color-primary);
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 0 8px var(--color-primary-light);
+    }
+
+    /* Command categories */
+    .command-category {
+      margin-bottom: 36px;
+    }
+
+    .command-category h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--color-primary-light);
+      border-bottom: 2px solid var(--color-primary-light);
+      padding-bottom: 4px;
+      user-select: none;
+    }
+
+    dl {
+      list-style: none;
+      margin: 0;
+      padding: 0 12px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+    }
+
+    dt {
+      font-weight: 700;
+      color: var(--color-primary-light);
+      margin-top: 1em;
+      font-size: 1.2rem;
+    }
+
+    dd {
+      margin-left: 1.25em;
+      margin-top: 0.25em;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      color: var(--color-text);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-bg-alt);
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--color-border);
+      user-select: none;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(127, 90, 240, 0.2);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section.commands, footer {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    section.commands {
+      animation-delay: 0.3s;
+    }
+  </style>
 </head>
 <body>
-    <div id="stars"></div>
+  <nav>
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="commands.html">Commands</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="museum.html">Museum</a></li>
+    </ul>
+    <li><a href="cardsearch.html">Card Search</a></li>
+  </nav>
 
-    <header class="hero">
-        <h1>🚀 Everything Dex Commands</h1>
-        <p>Explore all the commands you can use in your cosmic adventure!</p>
-        <a class="button" href="index.html">← Back to Home</a>
-    </header>
+  <div id="stars"></div>
 
-    <section class="commands-category">
-        <h2>💰 Economy</h2>
-        <ul>
-            <li><strong>/balance</strong> — Check your coins</li>
-            <li><strong>/beg</strong> — Beg for coins</li>
-            <li><strong>/daily</strong> — Claim daily coins</li>
-            <li><strong>/work</strong> — Earn coins</li>
-            <li><strong>/transfer</strong> — Transfer coins to another player</li>
-        </ul>
+  <main>
+    <section class="commands" tabindex="0" aria-label="Commands list">
+      <h2>Commands</h2>
+
+      <div class="command-category" id="economy">
+        <h3>Economy 💰</h3>
+        <dl>
+          <dt>/balance</dt>
+          <dd>Check your current currency balance.</dd>
+
+          <dt>/work</dt>
+          <dd>Work to earn currency rewards.</dd>
+
+          <dt>/beg</dt>
+          <dd>Beg for a small amount of currency.</dd>
+
+          <dt>/transfer &lt;user&gt; &lt;amount&gt;</dt>
+          <dd>Transfer currency to another user.</dd>
+        </dl>
+      </div>
+
+      <div class="command-category" id="card-collecting">
+        <h3>Card Collecting 🃏</h3>
+        <dl>
+          <dt>/info &lt;card name&gt;</dt>
+          <dd>Get detailed info about a specific card.</dd>
+
+          <dt>/last</dt>
+          <dd>Show the last spawned card.</dd>
+
+          <dt>/collection</dt>
+          <dd>View your card collection and stats.</dd>
+
+          <dt>/completion</dt>
+          <dd>View your collection completion progress.</dd>
+
+          <dt>/gift &lt;user&gt; &lt;card name&gt;</dt>
+          <dd>Send a card from your collection to another user.</dd>
+
+          <dt>/wish &lt;card name&gt;</dt>
+          <dd>Wish for a specific card to spawn.</dd>
+        </dl>
+      </div>
+
+      <div class="command-category" id="leaderboard">
+        <h3>Leaderboard 📊</h3>
+        <dl>
+          <dt>/top</dt>
+          <dd>View the top collectors and richest users.</dd>
+
+          <dt>/profile &lt;user&gt;</dt>
+          <dd>View detailed profile stats of a user.</dd>
+        </dl>
+      </div>
+
+      <div class="command-category" id="utils">
+        <h3>Utils ⚙️</h3>
+        <dl>
+          <dt>/setspawnchannel &lt;channel&gt;</dt>
+          <dd>Set the channel for card spawns in your server.</dd>
+        </dl>
+      </div>
+
     </section>
+  </main>
 
-    <section class="commands-category">
-        <h2>🃏 Card Collecting</h2>
-        <ul>
-            <li><strong>/collection</strong> — View your card collection</li>
-            <li><strong>/completion</strong> — Check your completion percentage</li>
-            <li><strong>/info</strong> — Get info about a specific card</li>
-            <li><strong>/gift</strong> — Gift a card to another player</li>
-            <li><strong>/wish</strong> — Make a wish for a card</li>
-            <li><strong>/last</strong> — View the last spawned card</li>
-        </ul>
-    </section>
+  <footer>
+    &copy; 2025 Everything Dex Bot. All rights reserved.
+  </footer>
 
-    <section class="commands-category">
-        <h2>⚙ Utilities</h2>
-        <ul>
-            <li><strong>/setspawnchannel</strong> — Set the spawn channel</li>
-            <li><strong>/invite</strong> — Get the bot invite link</li>
-        </ul>
-    </section>
+  <script>
+    // Generate random stars for background
+    const starsContainer = document.getElementById('stars');
+    const starCount = 50;
 
-    <section class="commands-category">
-        <h2>🏆 Leaderboard & Profile</h2>
-        <ul>
-            <li><strong>/top</strong> — See the leaderboard</li>
-            <li><strong>/profile</strong> — View your player profile</li>
-        </ul>
-    </section>
+    for(let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
 
-    <footer>
-        <p>⭐ Made with love & stardust ✨ | Everything Dex Bot</p>
-    </footer>
+      // Random size class
+      const sizes = ['small', 'medium', 'large'];
+      star.classList.add(sizes[Math.floor(Math.random() * sizes.length)]);
 
-    <script>
-        const numStars = 150;
-        const starsContainer = document.getElementById('stars');
+      // Random position
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
 
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-
-            // Randomly assign size class for variety
-            const sizeRand = Math.random();
-            if (sizeRand < 0.5) star.classList.add('small');
-            else if (sizeRand < 0.85) star.classList.add('medium');
-            else star.classList.add('large');
-
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.animationDuration = `${1 + Math.random() * 3}s`;
-
-            starsContainer.appendChild(star);
-        }
-    </script>
+      starsContainer.appendChild(star);
+    }
+  </script>
 </body>
 </html>
