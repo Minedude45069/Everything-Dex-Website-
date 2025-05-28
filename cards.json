@@ -1,0 +1,195 @@
+[
+  {
+    "name": "Albert Einstein",
+    "rarity": "Legendary",
+    "desc": "Renowned physicist known for the theory of relativity.",
+    "image": "images/Albert-Einstein.png"
+  },
+  {
+    "name": "The Observable Universe",
+    "rarity": "Unobtainable",
+    "desc": "The totality of everything we can observe in space and time.",
+    "image": "images/The-Observable-Universe.png"
+  },
+  {
+    "name": "Lana Rhoades",
+    "rarity": "Rare",
+    "desc": "Porn star known for her work in adult films.",
+    "image": "images/Lana-Rhoades.png"
+  },
+  {
+    "name": "Quantum Computer",
+    "rarity": "Epic",
+    "desc": "A computer that uses quantum-mechanical phenomena, such as superposition and entanglement, to perform operations on data.",
+    "image": "images/Quantum-Computer.png"
+  },
+  {
+    "name": "Game Boy",
+    "rarity": "Uncommon",
+    "desc": "A handheld game console manufactured by Nintendo.",
+    "image": "images/Game-Boy.png"
+  },
+  {
+    "name": "Floppy Disk",
+    "rarity": "Common",
+    "desc": "A flat, circular magnetic storage medium used for storing and transferring digital information.",
+    "image": "images/Floppy-Disk.png"
+  },
+  {
+    "name": "M134 Minigun",
+    "rarity": "Legendary",
+    "desc": "A 7.62mm machine gun used by the united states military.",
+    "image": "images/M134-Minigun.png"
+  },
+  {
+    "name": "Nintendo Switch",
+    "rarity": "Rare",
+    "desc": "A hybrid video game console developed by Nintendo.",
+    "image": "images/Nintendo-Switch.png"
+  },
+  {
+    "name": "Eiffel Tower",
+    "rarity": "Legendary",
+    "desc": "A wrought-iron lattice tower on the Champ de Mars in Paris, France.",
+    "image": "images/Eiffel-Tower.png"
+  },
+  {
+    "name": "Walkman",
+    "rarity": "Uncommon",
+    "desc": "A portable cassette tape player developed by Sony",
+    "image": "images/Walkman.png"
+  },
+  {
+    "name": "Light Bulb",
+    "rarity": "Common",
+    "desc": "A device that produces light by passing an electric current through a filament.",
+    "image": "images/Light-Bulb.png"
+  },
+  {
+    "name": "Rubiks Cube",
+    "rarity": "Common",
+    "desc": "A 3-D combination puzzle invented in 1974",
+    "image": "images/Rubiks-Cube.png"
+  },
+  {
+    "name": "Kindle",
+    "rarity": "Uncommon",
+    "desc": "A line of e-book readers and tablets developed by Amazon.",
+    "image": "images/Kindle.png"
+  },
+  {
+    "name": "Tower Bridge",
+    "rarity": "Uncommon",
+    "desc": "A combined bascule and suspension bridge in London, England.",
+    "image": "images/Tower-Bridge.png"
+  },
+  {
+    "name": "Paper Plane",
+    "rarity": "Common",
+    "desc": "A simple aircraft made from a single sheet of paper or other light material.",
+    "image": "images/Paper-Plane.png"
+  },
+  {
+    "name": "Colosseum",
+    "rarity": "Epic",
+    "desc": "An oval amphitheater in the center of the city of Rome, Italy",
+    "image": "images/Colosseum.png"
+  },
+  {
+    "name": "Barbie Signature",
+    "rarity": "Mythical",
+    "desc": "A signature doll made by Mattel.",
+    "image": "images/Barbie-Signature.png"
+  },
+  {
+    "name": "Moon",
+    "rarity": "Common",
+    "desc": "The natural satellite of the Earth.",
+    "image": "images/Moon.png"
+  },
+  {
+    "name": "The International Space Station",
+    "rarity": "Common",
+    "desc": "A habitable artificial satellite in low Earth orbit.",
+    "image": "images/International-Space-Station.png"
+  },
+  {
+    "name": "Space Shuttle",
+    "rarity": "Common",
+    "desc": "A reusable spacecraft designed for human spaceflight.",
+    "image": "images/Space-Shuttle.png"
+  },
+  {
+    "name": "Asteroid",
+    "rarity": "Common",
+    "desc": "A small, rocky body that orbits the Sun.",
+    "image": "images/Asteroid.png"
+  },
+  {
+    "name": "Europa",
+    "rarity": "Uncommon",
+    "desc": "The sixth-largest moon of jupiter",
+    "image": "images/Europa.png"
+  },
+  {
+    "name": "Hubble Telescope",
+    "rarity": "Uncommon",
+    "desc": "A large, space-based telescope orbiting the Earth.",
+    "image": "images/Hubble-Telescope.png"
+  },
+  {
+    "name": "Lunar Module Eagle",
+    "rarity": "Uncommon",
+    "image": "images/Lunar-Module-Eagle.png"
+  },
+  {
+    "name": "James Webb Telescope",
+    "rarity": "Uncommon",
+    "image": "images/James-Webb-Telescope.png"
+  },
+  {
+    "name": "Mars Rover Curiosity",
+    "rarity": "Uncommon",
+    "image": "images/Mars-Rover-Curiosity.png"
+  },
+  {
+    "name": "Saturn",
+    "rarity": "Rare",
+    "image": "images/Saturn.png"
+  },
+  {
+    "name": "SpaceX Starship",
+    "rarity": "Rare",
+    "image": "images/Spacex-Starship.png"
+  },
+  {
+    "name": "Voyager 1",
+    "rarity": "Rare",
+    "image": "images/Voyager-1.png"
+  },
+  {
+    "name": "Mars",
+    "rarity": "Epic",
+    "image": "images/Mars.png"
+  },
+  {
+    "name": "Titan",
+    "rarity": "Epic",
+    "image": "images/Titan.png"
+  },
+  {
+    "name": "Large Magellanic Cloud",
+    "rarity": "Epic",
+    "image": "images/Large-Magellanic-Cloud.png"
+  },
+  {
+    "name": "The Milky Way",
+    "rarity": "Legendary",
+    "image": "images/The-Milky-Way.png"
+  },
+  {
+    "name": "Sagittarius A*",
+    "rarity": "Mythical",
+    "image": "images/Sagittarius-A.png"
+  }
+]
