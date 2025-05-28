@@ -1,107 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Everything Dex Bot - Changelog</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        /* Star container fixed behind content */
-        #stars {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <title>Everything Dex Bot - Changelog</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        /* Changelog section styling */
-        .changelog {
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #3b0077cc, #1a0033cc);
-            border-radius: 20px;
-            box-shadow: 0 0 30px #6a0dad;
-            color: #d1b3ff;
-            max-width: 900px;
-            margin: 20px auto;
-            text-align: left;
-        }
+    :root {
+      --color-bg: #0f0e17;
+      --color-bg-alt: #1a1a40cc;
+      --color-primary: #7f5af0;
+      --color-primary-light: #9f80ff;
+      --color-text: #e0d6ff;
+      --color-text-muted: #a6a0ff;
+      --color-border: #2e2c50;
+      --color-section-bg-glass: rgba(25, 26, 46, 0.4);
+      --color-star: #9b30ff;
+    }
 
-        .changelog h2 {
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            color: #d580ff;
-            text-shadow: 0 0 15px #9b30ff;
-            text-align: center;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .changelog ul {
-            list-style: none;
-            padding: 0;
-        }
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-top: 60px; /* space for fixed navbar */
+    }
 
-        .changelog li {
-            background: rgba(255, 255, 255, 0.05);
-            margin: 12px 0;
-            padding: 20px 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px #8a2be2;
-            transition: background 0.3s ease;
-            font-size: 1.15em;
-            line-height: 1.5;
-        }
+    /* Navbar styles */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--color-section-bg-glass);
+      border-bottom: 1px solid var(--color-border);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(127, 90, 240, 0.3);
+    }
 
-        .changelog li:hover {
-            background: rgba(255, 255, 255, 0.12);
-            cursor: default;
-        }
-    </style>
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background: var(--color-primary);
+      color: white;
+      outline: none;
+      box-shadow: 0 0 10px var(--color-primary-light);
+    }
+
+    nav ul li a[aria-current="page"] {
+      background: var(--color-primary);
+      color: white;
+      cursor: default;
+    }
+
+    /* Star container fixed behind content */
+    #stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Single star styles */
+    .star {
+      position: absolute;
+      background: var(--color-star);
+      border-radius: 50%;
+      opacity: 0.6;
+      box-shadow: 0 0 5px 1px var(--color-star);
+      animation: twinkle 3s infinite alternate ease-in-out;
+    }
+
+    .star.small {
+      width: 2px;
+      height: 2px;
+      animation-duration: 2.5s;
+    }
+
+    .star.medium {
+      width: 3.5px;
+      height: 3.5px;
+      animation-duration: 3.5s;
+    }
+
+    .star.large {
+      width: 5px;
+      height: 5px;
+      animation-duration: 4.5s;
+    }
+
+    .star:nth-child(odd) {
+      animation-delay: 0s;
+    }
+    .star:nth-child(even) {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+        box-shadow: 0 0 3px 1px var(--color-star);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 7px 2px var(--color-star);
+      }
+    }
+
+    /* Page main section */
+    main {
+      max-width: 900px;
+      margin: 48px auto 80px;
+      padding: 0 24px;
+    }
+
+    section.changelog {
+      background: var(--color-section-bg-glass);
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      padding: 40px 40px;
+      box-shadow: 0 0 20px rgba(127, 90, 240, 0.3);
+      backdrop-filter: blur(10px);
+      color: var(--color-text);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      outline: none;
+    }
+
+    section.changelog:hover {
+      box-shadow: 0 10px 40px rgba(127, 90, 240, 0.35);
+      transform: translateY(-6px);
+    }
+
+    section.changelog h2 {
+      font-size: 2.5em;
+      margin-bottom: 25px;
+      color: var(--color-primary);
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 0 8px var(--color-primary-light);
+      user-select: none;
+    }
+
+    /* Individual changelog entry */
+    .changelog-entry {
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 20px;
+    }
+
+    .changelog-entry:last-child {
+      border-bottom: none;
+    }
+
+    .changelog-date {
+      font-weight: 700;
+      color: var(--color-primary-light);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .changelog-version {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      user-select: none;
+    }
+
+    ul.changelog-list {
+      margin: 0;
+      padding-left: 20px;
+      list-style-type: disc;
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    ul.changelog-list li {
+      margin-bottom: 6px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-bg-alt);
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--color-border);
+      user-select: none;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(127, 90, 240, 0.2);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section.changelog, footer {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    section.changelog {
+      animation-delay: 0.3s;
+    }
+  </style>
 </head>
 <body>
-    <div id="stars"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="commands.html">Commands</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="museum.html">Museum</a></li>
+        <li><a href="cardsearch.html">Card Search</a></li>
+      </ul>
+    </nav>
 
-    <header class="hero">
-        <h1>📜 Everything Dex Changelog</h1>
-        <p>Stay updated with the latest features, fixes, and improvements!</p>
-        <a class="button" href="index.html">← Back to Home</a>
-    </header>
+  <div id="stars"></div>
 
-    <section class="changelog">
-        <h2>Latest Updates</h2>
-        <ul>
-            <li><strong>2025-05-25:</strong> EVERYTHING DEX V1.2:
-            Added new categories,
-            Added new cards,
-            Updated /info and /gift command,
-            bug fixes</li>
+  <main>
+    <section class="changelog" tabindex="0" aria-label="Bot changelog history">
+      <h2>Changelog</h2>
+
+      <article class="changelog-entry">
+        <time class="changelog-date" datetime="2025-05-20">May 20, 2025</time>
+        <h3 class="changelog-version">Version 1.2.0 - Major Update</h3>
+        <ul class="changelog-list">
+          <li>Added new categories.</li>
+          <li>Added more than 40 cards</li>
+          <li>Added the first unobtainable card</li>
+          <li>Updated /info and /gift to support quer</li>
         </ul>
+      </article>
     </section>
+  </main>
 
-    <footer>
-        <p>⭐ Made with love & stardust ✨ | Everything Dex Bot</p>
-    </footer>
+  <footer>
+    &copy; 2025 Everything Dex Bot. All rights reserved.
+  </footer>
 
-    <script>
-        const numStars = 150;
-        const starsContainer = document.getElementById('stars');
+  <script>
+    // Generate random stars for background
+    const starsContainer = document.getElementById('stars');
+    const starCount = 50;
 
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
+    for(let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
 
-            // Randomly assign size class for variety
-            const sizeRand = Math.random();
-            if (sizeRand < 0.5) star.classList.add('small');
-            else if (sizeRand < 0.85) star.classList.add('medium');
-            else star.classList.add('large');
+      const sizes = ['small', 'medium', 'large'];
+      star.classList.add(sizes[Math.floor(Math.random() * sizes.length)]);
 
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.animationDuration = `${1 + Math.random() * 3}s`;
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
 
-            starsContainer.appendChild(star);
-        }
-    </script>
+      starsContainer.appendChild(star);
+    }
+  </script>
 </body>
 </html>
